@@ -1,9 +1,11 @@
 package com.example.FoodDeliveryApp.dto.request;
 
-import com.example.FoodDeliveryApp.enums.FoodCategory;
+import com.example.FoodDeliveryApp.enums.Gender;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -12,17 +14,20 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+public class PartnerRequest {
 
-public class FoodItemRequest {
 
-    int restaurantID;
+    String name;
 
-    String dishName;
 
-    double price;
+    String email;
 
-    boolean veg;
 
-    FoodCategory foodCategory;
+    String mobileNo;
 
+
+    Gender gender;
+
+
+    boolean available;
 }

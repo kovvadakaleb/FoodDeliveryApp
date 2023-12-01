@@ -22,7 +22,7 @@ public class Cart {
     int id;
 
     @Column(name = "cart_total")
-    int cartTotal;
+    double cartTotal;
 
     @OneToOne
     @JoinColumn

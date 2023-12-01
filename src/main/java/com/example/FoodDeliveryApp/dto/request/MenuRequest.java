@@ -1,4 +1,4 @@
-package com.example.FoodDeliveryApp.dto.response;
+package com.example.FoodDeliveryApp.dto.request;
 
 import com.example.FoodDeliveryApp.enums.FoodCategory;
 import lombok.*;
@@ -9,7 +9,11 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FoodItemResponse {
+
+public class MenuRequest {
+
+    int restaurantID;
+
     String dishName;
 
     double price;
@@ -17,4 +21,5 @@ public class FoodItemResponse {
     boolean veg;
 
     FoodCategory foodCategory;
+
 }

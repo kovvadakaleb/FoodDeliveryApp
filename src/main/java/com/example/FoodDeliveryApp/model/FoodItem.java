@@ -1,6 +1,5 @@
 package com.example.FoodDeliveryApp.model;
 
-import com.example.FoodDeliveryApp.enums.FoodCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,21 +18,11 @@ public class FoodItem {
     @Column(name = "id")
     int id;
 
-    @Column(name = "dish_name",nullable = false)
-    String dishName;
+    @Column(name = "required-quantity",nullable = false)
+    int requiredQuantity;
 
-    @Column(name = "price",nullable = false)
-    double price;
-
-    @Column(name = "veg",nullable = false)
-    boolean veg;
-
-    @Column(name = "available",nullable = false)
-    boolean available;
-
-    @Column(name = "food_category")
-    @Enumerated(EnumType.STRING)
-    FoodCategory foodCategory;
+    @Column(name = "total-cost",nullable = false)
+    double totalCost;
 
     @ManyToOne
     @JoinColumn
@@ -41,9 +30,10 @@ public class FoodItem {
 
     @ManyToOne
     @JoinColumn
-    OrderEntity orderEntity;
+    MenuItem menuItem;
 
     @ManyToOne
     @JoinColumn
-    Restaurant restaurant;
+    OrderEntity orderEntity;
+
 }

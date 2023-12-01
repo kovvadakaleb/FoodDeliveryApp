@@ -3,8 +3,9 @@ package com.example.FoodDeliveryApp.enums;
 public enum FoodCategory {
     VEG,
     NONVEG,
-    VEGSTARTER,
-    NONVEGSTARTER,
+    MAINCOURSE,
+    CHINESE,
     DESSERT,
-    DRINKS
+    SOFTDRINKS,
+    JAPANESE
 }

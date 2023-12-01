@@ -1,13 +1,8 @@
 package com.example.FoodDeliveryApp.transformer;
 
 import com.example.FoodDeliveryApp.dto.request.CustomerRequest;
-import com.example.FoodDeliveryApp.dto.response.CartResponse;
 import com.example.FoodDeliveryApp.dto.response.CustomerResponse;
-import com.example.FoodDeliveryApp.dto.response.FoodItemResponse;
 import com.example.FoodDeliveryApp.model.Customer;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class CustomerTransformer {
 

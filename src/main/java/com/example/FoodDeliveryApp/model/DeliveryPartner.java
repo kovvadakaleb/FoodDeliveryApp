@@ -41,6 +41,9 @@ public class DeliveryPartner {
     @Enumerated(EnumType.STRING)
     Gender gender;
 
+    @Column(name = "available",nullable = false)
+    boolean available;
+
     @OneToMany(mappedBy = "deliveryPartner",cascade = CascadeType.ALL)
     List<OrderEntity> orderEntityList = new ArrayList<>();
 }

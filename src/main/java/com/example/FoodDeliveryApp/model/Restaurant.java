@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +46,5 @@ public class Restaurant {
     List<OrderEntity> orderEntityList = new ArrayList<>();
 
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL)
-    List<FoodItem> foodItemList = new ArrayList<>();
+    List<MenuItem> menuItemList = new ArrayList<>();
 }

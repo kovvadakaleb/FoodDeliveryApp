@@ -1,18 +1,18 @@
-package com.example.FoodDeliveryApp.dto.response;
+package com.example.FoodDeliveryApp.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CartResponse {
+public class FoodRequest {
 
-    double cartTotal;
+    int requiredQuantity;
 
-    List<FoodResponse> foodItems;
+    String customerMobile;
+
+    int menuId;
 }

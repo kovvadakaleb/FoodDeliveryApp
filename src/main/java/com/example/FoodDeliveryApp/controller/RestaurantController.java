@@ -1,6 +1,6 @@
 package com.example.FoodDeliveryApp.controller;
 
-import com.example.FoodDeliveryApp.dto.request.FoodItemRequest;
+import com.example.FoodDeliveryApp.dto.request.MenuRequest;
 import com.example.FoodDeliveryApp.dto.request.RestaurantRequest;
 import com.example.FoodDeliveryApp.dto.response.RestaurantResponse;
 import com.example.FoodDeliveryApp.exception.RestaurantNotFound;
@@ -33,9 +33,9 @@ public class RestaurantController {
         }
     }
     @PostMapping("/add-menu")
-    public ResponseEntity addMenuToRestaurant(@RequestBody FoodItemRequest foodItemRequest){
+    public ResponseEntity addMenuToRestaurant(@RequestBody MenuRequest menuRequest){
         try {
-            RestaurantResponse restaurantResponse = restaurantService.addMenuToRestaurant(foodItemRequest);
+            RestaurantResponse restaurantResponse = restaurantService.addMenuToRestaurant(menuRequest);
             return new ResponseEntity(restaurantResponse,HttpStatus.ACCEPTED);
         }
         catch (RestaurantNotFound e){
