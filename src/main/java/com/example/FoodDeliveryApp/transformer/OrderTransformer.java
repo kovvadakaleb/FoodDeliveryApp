@@ -14,7 +14,9 @@ public class OrderTransformer {
     public static OrderEntity prepareOrder(Cart cart){
         return OrderEntity.builder()
                 .orderId(String.valueOf(UUID.randomUUID()))
-                .price(cart.getCartTotal())
+                .foodBill(cart.getCartTotal())
+                .CGST(cart.getCartTotal()*((double)3/100))
+                .SGST(cart.getCartTotal()*((double)2/100))
                 .build();
     }
 
@@ -28,7 +30,8 @@ public class OrderTransformer {
         return OrderResponse.builder()
                 .orderId(orderEntity.getOrderId())
                 .date(orderEntity.getDate())
-                .price(orderEntity.getPrice())
+                .centralGST("3%")
+                .stateGST("2%")
                 .customerMobileNo(orderEntity.getCustomer().getMobileNo())
                 .customerName(orderEntity.getCustomer().getName())
                 .deliveryName(orderEntity.getDeliveryPartner().getName())

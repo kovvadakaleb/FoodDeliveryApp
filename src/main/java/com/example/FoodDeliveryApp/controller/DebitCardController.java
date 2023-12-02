@@ -1,6 +1,7 @@
 package com.example.FoodDeliveryApp.controller;
 
 import com.example.FoodDeliveryApp.dto.request.DebitCardRequest;
+import com.example.FoodDeliveryApp.exception.CustomerNotFound;
 import com.example.FoodDeliveryApp.service.DebitCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,12 @@ public class DebitCardController {
     DebitCardService debitCardService;
     @PostMapping("/add")
     public ResponseEntity addDebitCard(@RequestBody DebitCardRequest debitCardRequest){
-        String response = debitCardService.addDebitCard(debitCardRequest);
-        return new ResponseEntity(response, HttpStatus.CREATED);
+        try {
+            String response = debitCardService.addDebitCard(debitCardRequest);
+            return new ResponseEntity(response, HttpStatus.CREATED);
+        }
+        catch(CustomerNotFound e){
+            return new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.FoodDeliveryApp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,8 +31,17 @@ public class OrderEntity {
     @Column(name = "date")
     Date date;
 
-    @Column(name = "price")
-    double price;
+    @Column(name = "food_bill")
+    double foodBill;
+
+    @Column(name = "cgst")
+    double CGST;
+
+    @Column(name = "sgst")
+    double SGST;
+
+    @Column(name = "paid_amount")
+    int paidAmount;
 
     @ManyToOne
     @JoinColumn
@@ -47,4 +57,8 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn
     Restaurant restaurant;
+
+    @ManyToOne
+    @JoinColumn
+    Coupon coupon;
 }

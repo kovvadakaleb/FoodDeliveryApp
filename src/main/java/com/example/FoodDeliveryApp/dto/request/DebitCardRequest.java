@@ -11,6 +11,8 @@ import lombok.experimental.FieldDefaults;
 @Builder
 public class DebitCardRequest {
 
+    String customerMobileNo;
+
     String cardNo;
 
     CardStatus cardStatus;

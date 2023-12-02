@@ -19,8 +19,6 @@ public class OrderResponse {
 
     Date date;
 
-    double price;
-
     String customerName;
 
     String customerMobileNo;
@@ -31,6 +29,13 @@ public class OrderResponse {
 
     String restaurantName;
 
+    String centralGST;
+
+    String stateGST;
+
+    String couponDiscount;
+
     List<FoodResponse> foodResponseList;
 
+    TotalBill totalBill;
 }

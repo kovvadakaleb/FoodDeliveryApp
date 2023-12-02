@@ -48,4 +48,7 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     List<OrderEntity> orderEntityList = new ArrayList<>();
+
+    @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL)
+    DebitCard debitCard;
 }

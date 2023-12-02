@@ -35,4 +35,7 @@ public class DebitCard {
     @Column(name = "balance",nullable = false)
     double balance;
 
+    @OneToOne
+    @JoinColumn
+    Customer customer;
 }
