@@ -10,6 +10,8 @@ import com.example.FoodDeliveryApp.repository.*;
 import com.example.FoodDeliveryApp.service.OrderService;
 import com.example.FoodDeliveryApp.transformer.OrderTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +29,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     CouponRepository couponRepository;
+
+    @Autowired
+    JavaMailSender javaMailSender;
     @Override
     public OrderResponse placeOrder(String customerMobile) {
         Customer customer = customerRepository.findBymobileNo(customerMobile);
@@ -59,10 +64,8 @@ public class OrderServiceImpl implements OrderService {
         OrderEntity savedEntity = orderRepository.save(orderEntity);
 
         DeliveryPartner deliveryPartner = partnerRepository.findRandomDeliveryBoy();
-        while(!deliveryPartner.isAvailable()){
-            deliveryPartner = partnerRepository.findRandomDeliveryBoy();
-        }
-        deliveryPartner.setAvailable(false);
+
+
         Restaurant restaurant = cart.getFoodItemList().get(0).getMenuItem().getRestaurant();
 
         savedEntity.setCoupon(coupon);
@@ -99,6 +102,15 @@ public class OrderServiceImpl implements OrderService {
 
         orderResponse.setCouponDiscount(coupon.getDiscount()+"%");
         orderResponse.setTotalBill(totalBill);
+
+        String text = "Your Order with orderId: "+orderResponse.getOrderId()+"  is on the Way to Reached You Within 15Minutes By Our Delivery Partner "+deliveryPartner.getName()+" Ph:+"+customer.getMobileNo()+".\n        Have Your Favourite Meal.\n        Thanks For Choosing Swiggato.\n";
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom("kaleb916020@gmail.com");
+        simpleMailMessage.setTo(customer.getEmail());
+        simpleMailMessage.setSubject("Your Order has Been Placed!!!");
+        simpleMailMessage.setText(text);
+
+        javaMailSender.send(simpleMailMessage);
 
         return orderResponse;
     }

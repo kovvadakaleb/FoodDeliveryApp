@@ -103,7 +103,7 @@ public class CartServiceImpl implements CartService {
         }
 
         cart.setCartTotal(cartTotal);
-        Cart savedcart = cartRepository.save(cart);
+        cartRepository.save(cart);
         menuRepository.save(item);
 
         return CartTransformer.Cart_To_CartStatusResponse(customer);
