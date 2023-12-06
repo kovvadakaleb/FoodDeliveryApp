@@ -103,7 +103,9 @@ public class OrderServiceImpl implements OrderService {
         orderResponse.setCouponDiscount(coupon.getDiscount()+"%");
         orderResponse.setTotalBill(totalBill);
 
-        String text = "Your Order with orderId: "+orderResponse.getOrderId()+"  is on the Way to Reached You Within 15Minutes By Our Delivery Partner "+deliveryPartner.getName()+" Ph:+"+customer.getMobileNo()+".\n        Have Your Favourite Meal.\n        Thanks For Choosing Swiggato.\n";
+        String text = "Your Order with orderId: "+orderResponse.getOrderId()+"  is on the Way to Reached You Within 15Minutes By Our Delivery Partner "+deliveryPartner.getName()+" Ph:+"+customer.getMobileNo()+".\n"+
+            "\n"+orderResponse.getTotalBill()+"\n     Have Your Favourite Meal.\n            Thanks For Choosing Swiggato.\n";
+
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom("kaleb916020@gmail.com");
         simpleMailMessage.setTo(customer.getEmail());
